@@ -9,7 +9,8 @@ const Pagination = ({postsPerPage, totalPosts, paginate}) => {
     return (
         <div style={{padding: "60px 0"}}>
             <ul className="pagination">
-                <li className="disabled"><a href="#!"><i className="material-icons">chevron_left</i></a></li>
+                <li className="disabled"><i className="material-icons">chevron_left</i></li>
+                {/* <li className="disabled"><a href="#"><i className="material-icons">chevron_left</i></a></li> */}
                     {pageNumbers.map(number => (
                         <li key={number} className="waves-effect">
                             <a 
