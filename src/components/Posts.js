@@ -40,7 +40,6 @@ const Posts = ({posts, loading}) => {
                 </div>
             )
         })}
-        
     </div>
     )
 }
