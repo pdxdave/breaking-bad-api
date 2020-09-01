@@ -14,7 +14,7 @@ const Pagination = ({postsPerPage, totalPosts, paginate}) => {
                     {pageNumbers.map(number => (
                         <li key={number} className="waves-effect">
                             <a 
-                                href="!#"
+                                href="/"
                                 onClick={() => paginate(number)}
                             >{number}</a>
                         </li>
