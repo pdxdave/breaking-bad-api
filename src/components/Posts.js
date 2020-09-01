@@ -18,15 +18,15 @@ const Posts = ({posts, loading}) => {
         <div style={{display: 'flex', flexWrap: 'wrap', width: '100%', justifyContent: 'space-between'}} >
         {posts.map(post => {
             return (
-                <div class="card" style={{width: "300px"}}>
-                    <div class="card-image waves-effect waves-block waves-light" style={{width: "300px" }}>
-                        <img onError={addDefault}class="activator" src={post.img} alt="pic" style={{objectFit: "cover"}} />
+                <div className="card" style={{width: "300px"}} key={post.char_id}>
+                    <div className="card-image waves-effect waves-block waves-light" style={{width: "300px" }}>
+                        <img onError={addDefault} className="activator" src={post.img} alt="pic" style={{objectFit: "cover"}} />
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">{post.name}<i class="material-icons right">more_vert</i></span>
+                    <div className="card-content">
+                        <span className="card-title activator grey-text text-darken-4">{post.name}<i className="material-icons right">more_vert</i></span>
                     </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">{post.name}<i class="material-icons right">close</i></span>
+                    <div className="card-reveal">
+                        <span className="card-title grey-text text-darken-4">{post.name}<i className="material-icons right">close</i></span>
                         <ul style={{textAlign: "left"}}>
                             <li>Birthday: {post.birthday}</li>
                             {post.occupation.length === 1 

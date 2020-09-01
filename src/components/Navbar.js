@@ -4,8 +4,8 @@ import nav_logo from '../images/logo.png'
 const Navbar = () => {
     return (
     <nav style={{background: 'lightblue'}} className="center">
-        <div class="nav-wrapper">
-            <a href="!#" class="brand-logo">
+        <div className="nav-wrapper">
+            <a href="!#" className="brand-logo">
                 <img src={nav_logo} alt="log" style={{height: '65px'}}/>
             </a>
         </div>
