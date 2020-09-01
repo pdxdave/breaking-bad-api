@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import 'materialize-css/dist/css/materialize.min.css'
+import M from 'materialize-css/dist/js/materialize.min.js'
+import Posts from './components/Posts'
+import Navbar from './components/Navbar'
+import Pagination from './components/Pagination'
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(12)
+
+
+  useEffect(() => {
+    getActors()
+  }, [])
+
+  const getActors = async () => {
+    setLoading(true)
+    let res = await fetch('https://www.breakingbadapi.com/api/characters')
+    let data = await res.json()
+    setPosts(data)
+    setLoading(false)
+  }
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+
+// change page
+const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <div style={{margin: '0 auto', width: "80%"}}>
+          <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
+          <Posts posts={currentPosts} loading={loading} />
+      </div>
     </div>
   );
 }
 
 export default App;
+
